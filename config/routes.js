@@ -29,7 +29,11 @@ module.exports.routes = {
 
   //User
   'GET /signup': { controller: 'RegistrationController', action: 'show'},
-  'POST /signup': { controller: 'RegistrationController', action: 'create'}
+  'POST /signup': { controller: 'RegistrationController', action: 'create'},
+
+  //PASSPORT
+  'GET /login': { controller: 'AuthController', action: 'show'},
+  'POST /login': { controller: 'AuthController', action: 'create'},
 
 
 
