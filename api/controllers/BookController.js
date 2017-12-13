@@ -14,6 +14,21 @@ module.exports = {
             }).exec((err, regs)=>{
                 return res.view('books/index',{books:regs});
             })
+    },
+    findOne:(req, res)=> {
+        Book
+            .findOne({
+                id: req.params.id
+            }).exec((err, book)=> {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.view('books/show',{book:book});
+                }
+            })
+    },
+    formnew:(req, res)=> {
+        return res.view('books/new');
     }
 };
 

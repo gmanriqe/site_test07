@@ -1,14 +1,24 @@
 <% include ../partials/header %>
 <% include ../partials/menu %>
-    <div class="container">
-        <h1>Ultimos Libros</h1>
-        <table>
-            <tbody>
-                <% books.forEach(function(book){%>
-                <tr>
-                    <td><%= book.title %></td>
-                </tr>
-                <% }) %>
-            </tbody>
-        </table>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <h1>Ultimos Libros</h1>
+        </div>
+        <div class="col-xs-4 text-right">
+            <a href="/book/formnew" class=" btn btn-info">Añadir</a>
+        </div>
     </div>
+    
+    <div class="row">
+        <% books.forEach(function(book){%>
+        <div class="col-xs-10 col-sm-6 col-md-4">
+            <div class="card">
+                <h3><a href="/book/<%= book.id %>"><%= book.title %></a></h3>
+                <h3><%= book.description %></h3>
+                <p><%= book.publishedAd %></p>
+            </div>
+        </div>
+        <% }) %>
+    </div>  
+</div>
