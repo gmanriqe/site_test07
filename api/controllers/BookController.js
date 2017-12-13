@@ -29,6 +29,39 @@ module.exports = {
     },
     formnew:(req, res)=> {
         return res.view('books/new');
+    },
+    formedit:(req, res)=> {
+        Book
+        .findOne({
+            id: req.params.id
+        }).exec((err, book)=> {
+            if(err) {
+                console.log(err);
+            } else {
+                res.view('books/edit',{book:book});
+            }
+        })
+    },
+    delete:(req, res)=> {
+        Book
+        .findOne({
+            id: req.params.id
+        }).exec((err, book)=> {
+            if(err) {
+                console.log(err);
+            } else {
+                res.view('books/delete',{book:book});
+            }
+        })
+    },
+    /*este metodo fue creado para que despues de 
+    http://localhost:1337/book/id/delete me redireccion a 
+    http://localhost:1337/book */
+    destroy:(req, res)=>{
+        Book
+            .destroy({id: req.params.id}).exec((err)=>{
+                return res.redirect('/book');
+            })
     }
 };
 

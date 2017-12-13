@@ -21,6 +21,16 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+
+  '/book/:id/edit' : {
+    controller: 'BookController',
+    action: 'formedit'
+  },
+
+  '/book/:id/delete' : {
+    controller: 'BookController',
+    action: 'delete'
   }
 
   /***************************************************************************
