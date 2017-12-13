@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+    <div class="container">
+        <h1>Ultimos Libros</h1>
+        <table>
+            <tbody>
+                <% books.forEach(function(book){%>
+                <tr>
+                    <td><%= book.title %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>

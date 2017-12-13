@@ -6,6 +6,14 @@
  */
 
 module.exports = {
-	
+	find:(req, res)=>{
+        Book
+            .find({
+                limit: 20,
+                sort: 'createdAt DESC'
+            }).exec((err, regs)=>{
+                return res.view('books/index',{books:regs});
+            })
+    }
 };
 

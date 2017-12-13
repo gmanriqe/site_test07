@@ -6,9 +6,20 @@
 */
 
 module.exports = {
-
+  tableName: 'Book',
   attributes: {
-
+    title: {
+      type: 'string',
+      required: true
+    },
+    description: {
+      type: 'string',
+      size: 200
+    },
+    page: 'integer',
+    publishedAd: {
+      type: 'date'
+    }
   }
 };
 
