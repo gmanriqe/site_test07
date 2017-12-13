@@ -5,6 +5,21 @@ var passport = require('passport'),
 //reemplazando las promesas nativas
 Promise = require('bluebird');
 
+//serializar
+passport.serializeUser(function(user, done){
+    done(null, user.id);
+})
+//deserializar
+passport.deserializeUser(function(userId, done){
+    User
+        .findOne({id: userId})
+        .then(function(user){
+            done(null, user);
+        })
+        .catch(function(err){
+            done(err, false);
+        })
+})
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
