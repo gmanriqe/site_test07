@@ -7,24 +7,45 @@
             </header>
         <% } %>
         <div class="large-padding">
-            <% if(book.title) {%>
-                <p>
-                    <strong>Titulo:</strong>
-                    <span><%= book.title %></span>
-                </p>
-            <% } %>
-            <% if(book.description) {%>
-                <p>
-                    <strong>Descripción:</strong>
-                    <span><%= book.description %></span>
-                </p>
-            <% } %>
-            <% if(book.page) {%>
-                <p>
-                    <strong>No. Páginas:</strong>
-                    <span><%= book.page %></span>
-                </p>
-            <% } %>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <p>
+                        <strong>Titulo:</strong>
+                        <span><%= book.title %></span>
+                    </p>
+                    <% if(book.description) {%>
+                        <p>
+                            <strong>Descripción:</strong>
+                            <span><%= book.description %></span>
+                        </p>
+                    <% } %>
+                    <% if(book.page) {%>
+                        <p>
+                            <strong>No. Páginas:</strong>
+                            <span><%= book.page %></span>
+                        </p>
+                    <% } %>
+                    <% if(book.pdfUrl) {%>
+                        <p>
+                            <strong>PDF:</strong>
+                            <span><%= book.pdfUrl %></span>
+                        </p>
+                    <% } %>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <a role="button" data-toggle="collapse" href="#edit-form" aria-expanded="false" aria-controls="edit-form">Mostrar Opciones Avanzadas</a>
+                    <div class="collapse text-left" id="edit-form">
+                        <!-- <p>Hola Mundo</p> -->
+                        <form action="/book/<%=book.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="book">Archivo PDF del libro</label>
+                                <input type="file" name="pdfUrl" class="form-control" id="book"> 
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Guardar PDF">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

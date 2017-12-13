@@ -23,15 +23,15 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/book/:id/edit' : {
-    controller: 'BookController',
-    action: 'formedit'
-  },
+  //Book
+  '/book/:id/edit' : { controller: 'BookController', action: 'formedit' },
+  '/book/:id/delete' : { controller: 'BookController', action: 'delete' },
 
-  '/book/:id/delete' : {
-    controller: 'BookController',
-    action: 'delete'
-  }
+  //User
+  'GET /signup': { controller: 'RegistrationController', action: 'show'},
+  'POST /signup': { controller: 'RegistrationController', action: 'create'}
+
+
 
   /***************************************************************************
   *                                                                          *

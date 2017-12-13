@@ -67,6 +67,33 @@ module.exports = {
             }
         })
     },
+    update: function(req, res){
+        var dataActualizar = {};
+
+        if(req.body.title) dataActualizar['title'] = req.body.title;
+        if(req.body.description) dataActualizar['description'] = req.body.description;
+        if(req.body.page) dataActualizar['page'] = req.body.page;
+        if(req.body.publishedAd) dataActualizar['publishedAd'] = req.body.publishedAd;
+
+        req.file('pdfUrl').upload({
+            dirname: '../../books/files'
+        },(err, files)=>{
+            if(err) res.negotiate(err);
+
+            if(files.length > 0){
+                dataActualizar['pdfUrl'] = files[0].fd.split("/").pop();
+            }
+
+            console.log(dataActualizar);
+            Book
+                .update({id:req.params.id},dataActualizar)
+                .exec((err, libroActualizado)=>{
+                    if(err) res.negotiate(err);
+                    console.log('libroActualizado');
+                    res.view('books/show',{book:libroActualizado[0]});
+                })
+        })
+    },
     delete:(req, res)=> {
         Book
         .findOne({
