@@ -16,6 +16,9 @@
 body {
   background-color: #fafafa; }
 
+.cover {
+  width: 100%; }
+
 .card {
   background-color: white;
   padding: 10px 15px;

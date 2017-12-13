@@ -19,7 +19,9 @@ module.exports = {
     page: 'integer',
     publishedAd: {
       type: 'date'
-    }
+    },
+    fotoUrl:'string',
+    pdfUrl: 'string'
   }
 };
 

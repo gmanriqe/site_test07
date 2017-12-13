@@ -27,6 +27,31 @@ module.exports = {
                 }
             })
     },
+    create: function(req, res){
+        // 1.guardar registro en la BD y luego guardar el archivo
+        // ->2. primero guardar el archivo y luego guarda en la BD
+        req.file('fotoUrl').upload({ //'avatar' is name in form
+            dirname: '../../assets/images/books/avatars' //router for save avatar
+        },(err, files)=>{ //files is array with all data
+            if(err) res.negotiate(err);
+            // res.send(files);
+            var regs = {
+                title: req.body.title,
+                description: req.body.description,
+                page: req.body.page,
+                publishedAd: req.body.publishedAd,
+            }
+
+            if(files.length > 0) {
+                // add json regs
+                regs['fotoUrl'] = files[0].fd.split("/").pop();
+            }
+            Book
+                .create(regs, (err, newBook)=>{
+                    res.redirect('/book/'+ newBook.id);
+                })
+        })
+    },
     formnew:(req, res)=> {
         return res.view('books/new');
     },
