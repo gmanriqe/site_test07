@@ -1,0 +1,25 @@
+{
+  "name": "site_test07",
+  "description": "a Sails application",
+  "main": "app.js",
+  "authors": [
+    "jesusgonzales"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "SailsJS",
+    "EJS",
+    "MongoDB"
+  ],
+  "homepage": "https://github.com/gmanriqe/site_test07",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
