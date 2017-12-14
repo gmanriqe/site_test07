@@ -28,6 +28,15 @@ module.exports.policies = {
 
   // '*': true,
 
+  //Ahora las politicas pasan por controlador y por la accion :D 
+  BookController : {
+    // '*':['isAdmin','isEmp'], //para evaluar mas de 2 policies a la vez
+    '*':'isAdmin',
+    findOne: true,
+    find: true,
+  },
+  
+  
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
