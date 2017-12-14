@@ -35,6 +35,10 @@ module.exports.policies = {
     findOne: true,
     find: true,
   },
+
+  UserController : {
+    '*':'isAdmin'
+  }
   
   
   /***************************************************************************

@@ -33,17 +33,19 @@
                     <% } %>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <a role="button" data-toggle="collapse" href="#edit-form" aria-expanded="false" aria-controls="edit-form">Mostrar Opciones Avanzadas</a>
-                    <div class="collapse text-left" id="edit-form">
-                        <!-- <p>Hola Mundo</p> -->
-                        <form action="/book/<%=book.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="book">Archivo PDF del libro</label>
-                                <input type="file" name="pdfUrl" class="form-control" id="book"> 
-                            </div>
-                            <input type="submit" class="btn btn-success" value="Guardar PDF">
-                        </form>
-                    </div>
+                    <% if(user && user.admin){ %>
+                        <a role="button" data-toggle="collapse" href="#edit-form" aria-expanded="false" aria-controls="edit-form">Mostrar Opciones Avanzadas</a>
+                        <div class="collapse text-left" id="edit-form">
+                            <!-- <p>Hola Mundo</p> -->
+                            <form action="/book/<%=book.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="book">Archivo PDF del libro</label>
+                                    <input type="file" name="pdfUrl" class="form-control" id="book"> 
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Guardar PDF">
+                            </form>
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>

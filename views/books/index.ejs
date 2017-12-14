@@ -17,10 +17,12 @@
                 <h3><a href="/book/<%= book.id %>"><%= book.title %></a></h3>
                 <p><%= book.description %></p>
                 <p><%= book.publishedAd %></p>
-                <div class="actions">
-                    <a href="/book/<%= book.id %>/edit" style="margin-right: 1em">Editar</a>
-                    <a href="/book/<%= book.id %>/delete" style="margin-right: 1em" class="text-danger">Eliminar</a>
-                </div>
+                <% if(user && user.admin){ %>
+                    <div class="actions">
+                        <a href="/book/<%= book.id %>/edit" style="margin-right: 1em">Editar</a>
+                        <a href="/book/<%= book.id %>/delete" style="margin-right: 1em" class="text-danger">Eliminar</a>
+                    </div>
+                <% } %>
             </div>
         </div>
         <% }) %>

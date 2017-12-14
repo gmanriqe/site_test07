@@ -27,14 +27,17 @@ module.exports.routes = {
   '/book/:id/edit' : { controller: 'BookController', action: 'formedit' },
   '/book/:id/delete' : { controller: 'BookController', action: 'delete' },
 
-  //User
+  //REGISTRATION
   'GET /signup': { controller: 'RegistrationController', action: 'show'},
   'POST /signup': { controller: 'RegistrationController', action: 'create'},
 
   //PASSPORT
   'GET /login': { controller: 'AuthController', action: 'show'},
   'POST /login': { controller: 'AuthController', action: 'create'},
-  'DELETE /logout': { controller: 'AuthController', action: 'destroy'}
+  'DELETE /logout': { controller: 'AuthController', action: 'destroy'},
+  
+  //USER
+  'PUT /admin/:id': { controller: 'UserController', action: 'admin'}
 
 
   /***************************************************************************

@@ -15,7 +15,22 @@
             <tr>
                 <td><%= user.id%></td>
                 <td><%= user.email%></td>
-                <td>No Administrador</td>
+                <td>
+                    <% if (user.admin != 'undefined') { %>
+                        <form action="/admin/<%= user.id %>?_method=PUT" method="POST" class="form-inline">
+                            <% if(user.admin) {%>
+                                <p>quitarle permisos: </p>
+                                <input type="hidden" name="admin" value="0">
+                                <input type="submit" value="Quitar Permisos" class="btn btn-danger">
+                            <% } else { %>
+                                <p>asignarle permisos: </p>
+                                <input type="hidden" name="admin" value="1">
+                                <input type="submit" value="Asignar Permisos" class="btn btn-success">
+                            <% } %>    
+                        </form>
+                    <% } else { %>
+                    <% } %>
+                </td>
             </tr>
             <% }) %>
         </tbody>

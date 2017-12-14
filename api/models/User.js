@@ -17,18 +17,28 @@ module.exports = {
     password: {
       type: 'string',
       required: true
+    },
+    admin: {
+      type: 'boolean',
+      defaultsTo: false
     }
   },
 
   /* aqui podemos especificar funciones que se van especificar 
   en cierto puntos del proceso de registro a la BD */
   beforeCreate: (user, cb) => { //funcion que lanzaremos antes de crear un usuario en la BD
-    bcrypt
-      .hash(user.password, 10)
-      .then( hash => {
-        console.log(hash);
+    let bcryptPromise = bcrypt.hash(user.password, 10)
+    let userCountPromise = User.count({});
+
+    Promise
+      .all([bcryptPromise, userCountPromise])
+      .then(function([hash,userCount]){
         user.password = hash;
-        cb();
+        // user.admin = true //cuando es el primero
+        user.admin = true //cuando es 1,2,3, el primero es false
+        user.admin = userCount == 0;
+
+        cb();   
       })
       .catch(cb);
         console.log(cb);
@@ -36,7 +46,6 @@ module.exports = {
       //   console.log(err);
       //   cb(err);
       // })
-      
   }
 };
 
