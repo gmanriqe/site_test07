@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+<div class="container">
+    <table class="table">
+        <caption>Lista de usuarios en la plataforma</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Administrador</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(user){%>
+            <tr>
+                <td><%= user.id%></td>
+                <td><%= user.email%></td>
+                <td>No Administrador</td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
