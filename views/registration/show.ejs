@@ -2,8 +2,8 @@
 <% include ../partials/menu %>
 <div class="container">
     <h1>Registro de Usuario</h1>
-    
-    <% if(error) {%>
+       
+    <% if(typeof error != 'undefined') {%>
         <div class="panel panel-danger">
             <div class="panel-heading">
                 <h3 class="panel-title">Errores</h3>
@@ -12,6 +12,8 @@
                 <p><%= error %></p>
             </div>
         </div>
+    <% }else { %>  
+        
     <% } %>
     <form action="/signup" method="POST">
         <div class="form-group">

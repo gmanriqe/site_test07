@@ -12,6 +12,11 @@
         <div id="main-nav" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/book">Ultimos Libros</a></li>
+                <li>
+                    <form action="/logout?_method=DELETE" method="POST" class="form-inline">
+                        <input type="submit" value="Cerrar Sesion" class="btn btn-link fake-link">
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

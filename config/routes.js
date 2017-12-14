@@ -34,7 +34,7 @@ module.exports.routes = {
   //PASSPORT
   'GET /login': { controller: 'AuthController', action: 'show'},
   'POST /login': { controller: 'AuthController', action: 'create'},
-
+  'DELETE /logout': { controller: 'AuthController', action: 'destroy'}
 
 
   /***************************************************************************

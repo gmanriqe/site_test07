@@ -1,4 +1,11 @@
 <% include ./partials/header %>
 <% include ./partials/menu %>
+<div class="container">
+    <% if(typeof user != 'undefined') {%>
+        <p><%= user.email %></p>
+    <% }else { %>  
+        
+    <% } %>
 
+</div>
 <% include ./partials/footer %>
