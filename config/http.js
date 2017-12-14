@@ -27,6 +27,12 @@ module.exports.http = {
 
     passportInit: require('passport').initialize(),
     passportSession: require('passport').session(),
+    setUser: function(req,res,next){
+      if(req.user)
+        //objeto usuario de PASSPORT en todas mis vista
+        res.locals.user = req.user;
+      next(); //mandar llamar al sgte. middleware
+    },
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
@@ -47,6 +53,9 @@ module.exports.http = {
       'handleBodyParserError',
       'compress',
       'methodOverride',
+
+      'setUser',
+
       'poweredBy',
       '$custom',
       'router',
